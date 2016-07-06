@@ -1,19 +1,24 @@
 import React from 'react';
 import $ from 'jquery';
-import NewsItem from './NewsItem'
+import _ from 'lodash';
+import NewsItem from './NewsItem';
+import FancyTitle from './styles/FancyTitle';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 class NewsFeed extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      title: "Loading ...",
-      newsItems: []
+      title: "Loading...",
+      newsItems: [],
+      loading: true
     };
   }
 
-  componentDidMount(){
-    this.loadNews();
+  componentDidMount() {
+    window.setTimeout(this.loadNews.bind(this), 1000);
+    // this.loadNews();
   }
 
   loadNews() {
@@ -29,47 +34,68 @@ class NewsFeed extends React.Component {
        },
        success: function(xml){
          component.setState({
-           newsItems: xml.responseData.feed.entries
+           title: xml.responseData.feed.title,
+           newsItems: xml.responseData.feed.entries,
+           loading: false
          });
        }
      });
   }
 
-  renderNewsItem(item, index){
-    console.log("rendering item");
-
-    var content = $("<div>").html(item.content);
+  renderNewsItem(item, index) {
+    // Get the image from the HTML content snippet
+    var content = $("<div/>").html(item.content);
     var image = $("img", content).attr("src");
 
     return (
       <NewsItem
         key={index}
-        title={item.title}
+        item={item}
         image={image}
-        description={item.contentSnippet}
-        author={item.author}
-        link={item.link}  />
-
+        link={item.link} />
     );
   }
 
-  render() {
-
-    console.log(this.state);
-
+  renderList() {
     let title = this.state.title;
     let newsItems = this.state.newsItems;
+    let category = this.props.category;
+
+    if(category){
+      newsItems = _.filter(newsItems, function(item){
+      return _.includes(item.categories,category);
+       });
+    }
 
     return (
       <div>
-        <h1>{this.props.title}</h1>
+        <FancyTitle label={title} />
 
         <div>
           {newsItems.map(this.renderNewsItem.bind(this))}
         </div>
       </div>
     );
+  }
 
+  renderLoading() {
+    return(
+      <RefreshIndicator
+        top={100}
+        left={window.innerWidth / 2 - 50}
+        size={100}
+        loadingColor={"#FF9800"}
+        status="loading" />
+    );
+  }
+
+  render() {
+    alert(this.props.category);
+    if (this.state.loading) {
+      return this.renderLoading();
+    }
+
+    return this.renderList();
   }
 }
 
