@@ -22,7 +22,7 @@ class NewsItem extends React.Component {
         <CardActions>
           <RaisedButton label="Read" primary={true} linkButton={true} href={this.props.link} />
           {this.props.item.categories.map((category) => {
-            return (<Link to='/${category}'><FlatButton label={category}/></Link>);
+            return (<Link to={category}><FlatButton label={category}/></Link>);
           })}
         </CardActions>
       </Card>
