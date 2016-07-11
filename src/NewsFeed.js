@@ -5,7 +5,7 @@ import NewsItem from './NewsItem';
 import FancyTitle from './styles/FancyTitle';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
-import {containerStyle} from './styles/containers';
+// import {containerStyle} from './styles/containers';
 
 class NewsFeed extends React.Component {
   constructor() {
@@ -70,9 +70,9 @@ class NewsFeed extends React.Component {
     }
 
     return (
-      <div style={containerStyle}>
+      // <div style={containerStyle}>
+        <div>
         <FancyTitle label={title} />
-
         <div>
           {newsItems.map(this.renderNewsItem.bind(this))}
         </div>

@@ -7,25 +7,28 @@ import {Link} from 'react-router';
 class NewsItem extends React.Component {
   render() {
     return (
-      <Card>
-        <CardHeader
-          title={this.props.item.author}
-        />
-        <CardMedia
-          overlay={<CardTitle title={this.props.item.title} subtitle={this.props.item.categories.join(", ")} />}
-        >
-          <img src={this.props.image} />
-        </CardMedia>
-        <CardText dangerouslySetInnerHTML={{__html: this.props.item.contentSnippet}}>
+      <div>
+        <Card>
+          <CardHeader
+            title={this.props.item.author}
+          />
+          <CardMedia
+            overlay={<CardTitle title={this.props.item.title}  />}
+          >
+            <img src={this.props.image} />
+          </CardMedia>
+          <CardText dangerouslySetInnerHTML={{__html: this.props.item.contentSnippet}}>
 
-        </CardText>
-        <CardActions>
-          <RaisedButton label="Read" primary={true} linkButton={true} href={this.props.link} />
-          {this.props.item.categories.map((category) => {
-            return (<Link to={category}><FlatButton label={category}/></Link>);
-          })}
-        </CardActions>
-      </Card>
+          </CardText>
+          <CardActions>
+            <RaisedButton label="Read" primary={true} linkButton={true} href={this.props.link} />
+            {this.props.item.categories.map((category) => {
+              return (<Link to={category}><FlatButton label={category}/></Link>);
+            })}
+          </CardActions>
+        </Card>
+        <br/><br/>
+      </div>
     );
   }
 }
