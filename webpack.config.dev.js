@@ -25,6 +25,11 @@ module.exports = {
         presets: ['es2015', 'react']
       },
       include: path.join(__dirname, 'src')
-    }]
+      },
+      {
+        test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
+        loader: 'imports?define=>false&this=>window'
+      }
+    ]
   }
 };

@@ -4,10 +4,21 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
+
 class NewsItem extends React.Component {
+  constructor(){
+    super();
+
+    this.grid = {
+      float: "left",
+      width: "31%",
+      margin: "10"
+    };
+  }
+
   render() {
     return (
-      <div>
+      <div style={this.grid}>
         <Card>
           <CardHeader
             title={this.props.item.author}
@@ -27,7 +38,7 @@ class NewsItem extends React.Component {
             })}
           </CardActions>
         </Card>
-        <br/><br/>
+
       </div>
     );
   }
