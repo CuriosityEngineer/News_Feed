@@ -12,7 +12,6 @@ var masonryOptions = {
     transitionDuration: 0
 };
 
-// import {containerStyle} from './styles/containers';
 const styles = {
   root: {
     display: 'flex',
@@ -95,7 +94,6 @@ class NewsFeed extends React.Component {
     }
 
     return (
-      // <div style={containerStyle}>
       <div>
         <Header/>
         <div>
