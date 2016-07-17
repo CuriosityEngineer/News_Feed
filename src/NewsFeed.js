@@ -5,7 +5,30 @@ import NewsItem from './NewsItem';
 import FancyTitle from './styles/FancyTitle';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
-import {containerStyle} from './styles/containers';
+var Masonry = require('react-masonry-component');
+
+var masonryOptions = {
+    transitionDuration: 0
+};
+
+// import {containerStyle} from './styles/containers';
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: '100%',
+    height: 500,
+    overflowY: 'auto',
+    marginBottom: 24,
+  },
+};
+
+const grid = {
+  float: "left",
+};
 
 class NewsFeed extends React.Component {
   constructor() {
@@ -16,6 +39,7 @@ class NewsFeed extends React.Component {
       newsItems: [],
       loading: true
     };
+
   }
 
   componentDidMount() {
@@ -70,11 +94,13 @@ class NewsFeed extends React.Component {
     }
 
     return (
-      <div style={containerStyle}>
+      // <div style={containerStyle}>
+      <div>
         <FancyTitle label={title} />
-
         <div>
-          {newsItems.map(this.renderNewsItem.bind(this))}
+          <Masonry>
+            {newsItems.map(this.renderNewsItem.bind(this))}
+          </Masonry>  
         </div>
       </div>
     );

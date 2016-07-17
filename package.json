@@ -51,12 +51,15 @@
     "webpack-hot-middleware": "2.12.1"
   },
   "dependencies": {
+    "flexboxgrid": "^6.3.0",
+    "imports-loader": "^0.6.5",
     "jquery": "^3.0.0",
     "lodash": "^4.13.1",
     "material-ui": "^0.15.1",
     "parse-rss": "^1.0.3",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
+    "react-masonry-component": "^4.2.1",
     "react-router": "^2.5.2",
     "react-tap-event-plugin": "^1.0.0"
   }
