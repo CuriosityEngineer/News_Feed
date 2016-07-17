@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import _ from 'lodash';
 import NewsItem from './NewsItem';
+import Header from './header';
 import FancyTitle from './styles/FancyTitle';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
@@ -96,11 +97,11 @@ class NewsFeed extends React.Component {
     return (
       // <div style={containerStyle}>
       <div>
-        <FancyTitle label={title} />
+        <Header/>
         <div>
           <Masonry>
             {newsItems.map(this.renderNewsItem.bind(this))}
-          </Masonry>  
+          </Masonry>
         </div>
       </div>
     );
