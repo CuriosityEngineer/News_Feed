@@ -1,5 +1,6 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import FlatButton from 'material-ui/FlatButton';
 
 const headerStyle = {
   position: 'fixed',
@@ -11,6 +12,8 @@ const headerStyle = {
   height: 100,
 };
 
+
+
 class Header extends React.Component {
   render() {
     return(
@@ -18,7 +21,7 @@ class Header extends React.Component {
       <AppBar
         title="Colossal News Feed"
         style={headerStyle}
-        showMenuIconButton={false}
+        showMenuIconButton={false} />}
         />
       </div>
     );
