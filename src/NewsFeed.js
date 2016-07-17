@@ -30,6 +30,11 @@ const grid = {
   float: "left",
 };
 
+const position = {
+  paddingTop: 100,
+};
+
+
 class NewsFeed extends React.Component {
   constructor() {
     super();
@@ -96,7 +101,7 @@ class NewsFeed extends React.Component {
     return (
       <div>
         <Header/>
-        <div>
+        <div style={position}>
           <Masonry>
             {newsItems.map(this.renderNewsItem.bind(this))}
           </Masonry>
