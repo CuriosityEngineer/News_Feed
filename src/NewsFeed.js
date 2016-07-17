@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import _ from 'lodash';
 import NewsItem from './NewsItem';
+import Header from './header';
 import FancyTitle from './styles/FancyTitle';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
@@ -11,7 +12,6 @@ var masonryOptions = {
     transitionDuration: 0
 };
 
-// import {containerStyle} from './styles/containers';
 const styles = {
   root: {
     display: 'flex',
@@ -29,6 +29,11 @@ const styles = {
 const grid = {
   float: "left",
 };
+
+const position = {
+  paddingTop: 100,
+};
+
 
 class NewsFeed extends React.Component {
   constructor() {
@@ -94,13 +99,12 @@ class NewsFeed extends React.Component {
     }
 
     return (
-      // <div style={containerStyle}>
       <div>
-        <FancyTitle label={title} />
-        <div>
+        <Header/>
+        <div style={position}>
           <Masonry>
             {newsItems.map(this.renderNewsItem.bind(this))}
-          </Masonry>  
+          </Masonry>
         </div>
       </div>
     );

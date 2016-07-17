@@ -4,6 +4,10 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
+const buttonStyle ={
+  // marginLeft: 0,
+  marginTop: 10,
+}
 
 class NewsItem extends React.Component {
   constructor(){
@@ -24,17 +28,17 @@ class NewsItem extends React.Component {
             title={this.props.item.author}
           />
           <CardMedia
-            overlay={<CardTitle title={this.props.item.title}  />}
+            overlay={<CardTitle title={this.props.item.title} />}
           >
             <img src={this.props.image} />
           </CardMedia>
           <CardText dangerouslySetInnerHTML={{__html: this.props.item.contentSnippet}}>
-
           </CardText>
           <CardActions>
-            <RaisedButton label="Read" primary={true} linkButton={true} href={this.props.link} />
+            <RaisedButton label="Read" backgroundColor="#00a087" linkButton={true} href={this.props.link} />
+            <br/>
             {this.props.item.categories.map((category) => {
-              return (<Link to={category}><FlatButton label={category}/></Link>);
+              return (<Link to={category}><RaisedButton style={buttonStyle} label={category}/></Link>);
             })}
           </CardActions>
         </Card>
